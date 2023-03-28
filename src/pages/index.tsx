@@ -22,9 +22,12 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <canvas id="canvas" className="w-32 h-screen"/>
-      <div className="absolute top-0 left-0 pointer-events-none w-screen h-screen overflow-hidden" id="container">
+      <canvas id="canvas" className="fixed top-0 left-0 w-screen h-screen"/>
+      <div className="fixed top-0 left-0 pointer-events-none w-screen h-screen overflow-hidden" id="container">
         {sla.element()}
+      </div>
+      <div className="test z-50 w-full h-[200rem] absolute pointer-events-none flex items-center">
+        <div className="w-32 h-32 bg-red-500 testt">300</div>
       </div>
     </>
   );

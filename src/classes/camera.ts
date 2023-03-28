@@ -31,13 +31,13 @@ export default class Camera{
 
     setCamera(){
         this.camera = new THREE.PerspectiveCamera(
-            35,
+            30,
             this.Sizes?.AspectRatio,
-            0.1,
-            1000
+            1,
+            10000
         )
         this.scene?.add(this.camera)
-        this.camera.position.z = 5
+        this.camera.position.z = 500
     }
 
     resize(){

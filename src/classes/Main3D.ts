@@ -4,6 +4,7 @@ import * as THREE from 'three'
 import Camera from "./camera"
 import Renderer from "./renderer"
 import World from "./world/World"
+import CssRenderer from "./CssRenderer"
 
 export default class Main3D {
     static instance_: any
@@ -14,6 +15,7 @@ export default class Main3D {
     Timer
     canvas
     World
+    _css_renderer
 
     constructor(canvas?: HTMLCanvasElement){
         if(Main3D.instance_){
@@ -21,12 +23,13 @@ export default class Main3D {
         }
         Main3D.instance_ = this
 
-        this.scene = new THREE.Scene()
         this.canvas = canvas
-        this.camera = new Camera()
         this.Sizes = new Sizes()
         this.Timer = new Timer()
+        this.scene = new THREE.Scene()
+        this.camera = new Camera()
         this.renderer = new Renderer()
+        this._css_renderer = new CssRenderer()
 
         this.World = new World()
 
@@ -38,11 +41,11 @@ export default class Main3D {
     resize(){
         this.camera?.resize()
         this.renderer?.resize()
-        this.World?.resize()
+        this._css_renderer?.resize()
     }
 
     update(){
         this.renderer?.update()
-        this.World?.update()
+        this._css_renderer?.update()
     }
 }
