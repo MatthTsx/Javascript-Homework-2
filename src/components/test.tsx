@@ -9,13 +9,12 @@ class Test{
             return Test.instance_
         }
         Test.instance_ = this
-        this.hidden = false
+        this.hidden = true
     }
 
     public element(){
-        console.log("a")
         return(
-            <div id="test" className={`w-32 h-32 ${this.hidden && 'hiddene'} cursor-pointer bg-red-500`}>
+            <div id="test" className={`w-32 h-32 ${this.hidden && 'hidden'} cursor-pointer bg-red-500`}>
                 Test
             
                 <style>{`

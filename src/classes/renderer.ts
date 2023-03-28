@@ -35,6 +35,7 @@ export default class Renderer{
         this.renderer.shadowMap.type = THREE.PCFShadowMap //tipo das sombras
         this.renderer.setSize(this.sizes?.width, this.sizes?.height)
         this.renderer.setPixelRatio(this.sizes.PixelRatio)
+        this.renderer.setClearColor("#e3c9b6", 1)
 
     }
 

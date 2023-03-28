@@ -5,6 +5,7 @@ import Camera from "./camera"
 import Renderer from "./renderer"
 import World from "./world/World"
 import CssRenderer from "./CssRenderer"
+import _ScrollTrigger from "./animations/Scroll"
 
 export default class Main3D {
     static instance_: any
@@ -16,6 +17,7 @@ export default class Main3D {
     canvas
     World
     _css_renderer
+    _scroll
 
     constructor(canvas?: HTMLCanvasElement){
         if(Main3D.instance_){
@@ -32,9 +34,9 @@ export default class Main3D {
         this._css_renderer = new CssRenderer()
 
         this.World = new World()
+        this._scroll = new _ScrollTrigger()
 
         this.Timer.on("update", () => this.update())
-
         this.Sizes.on("sizeChange", () => this.resize())
     }
 
