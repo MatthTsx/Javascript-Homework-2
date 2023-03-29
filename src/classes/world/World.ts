@@ -16,6 +16,7 @@ export default class World{
     _Scene
     _environment:any
     _resources
+    _Loaded: boolean = false
 
     _obj1: THREE.Mesh | undefined
     _obj2: CSS3.CSS3DObject | undefined
@@ -45,6 +46,7 @@ export default class World{
             mesh.scene.scale.set(20,20,20)
             this._Scene.add(mesh.scene)
         })
+        this._Loaded = true
     }
 
     addObj(){
