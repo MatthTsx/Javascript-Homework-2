@@ -10,6 +10,7 @@ const Home: NextPage = () => {
   const firstLoad = useRef(true)
   const [Main, setMain] = useState<Main3D>()
   const sla = new Test()
+  sla.hidden = false
 
   useEffect(() => {
     if(!firstLoad.current) return

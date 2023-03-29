@@ -32,8 +32,8 @@ export default class Main3D {
         this.camera = new Camera()
         this.renderer = new Renderer()
         this._css_renderer = new CssRenderer()
-
         this.World = new World()
+
         this._scroll = new _ScrollTrigger()
 
         this.Timer.on("update", () => this.update())

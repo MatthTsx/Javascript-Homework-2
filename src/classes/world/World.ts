@@ -1,8 +1,10 @@
 import * as THREE from 'three'
 import * as CSS3 from 'three/examples/jsm/renderers/CSS3DRenderer'
+import { assets } from '~/constants'
 import _ScrollTrigger from '../animations/Scroll'
 import Main3D from '../Main3D'
 import Environment from './envioment'
+import Resources from './resource'
 
 export default class World{
     
@@ -13,8 +15,10 @@ export default class World{
     _Sizes
     _Scene
     _environment:any
-    _Scene2
+    _resources
 
+    _obj1: THREE.Mesh | undefined
+    _obj2: CSS3.CSS3DObject | undefined
 
     constructor(){
 
@@ -25,6 +29,36 @@ export default class World{
         this._Camera = this._Main.camera
         this._CSS = this._Main._css_renderer
         this._environment = new Environment()
-        this._Scene2 = new THREE.Scene()
+        
+        this._resources = new Resources(assets)
+
+
+        // this.addObj()
+        this.addObj2()
+
+        this._resources.on("loaded", () => this.load())
+    }
+
+    load(){
+        this._resources._items.forEach((mesh) => {
+            // this._Scene.add(mesh)
+            mesh.scene.scale.set(20,20,20)
+            this._Scene.add(mesh.scene)
+        })
+    }
+
+    addObj(){
+        const geo = new THREE.BoxGeometry(200,200,200)
+        const mat = new THREE.MeshBasicMaterial({color: "#ffffff"})
+        this._obj1 = new THREE.Mesh(geo,mat)
+        this._Scene.add(this._obj1)
+    }
+
+    addObj2(){
+        const test = document.querySelector("#test") as HTMLElement
+        if(!test) return
+        this._obj2 = new CSS3.CSS3DObject(test)
+        this._Scene.add(this._obj2)
+        this._obj2.position.z = 100
     }
 }

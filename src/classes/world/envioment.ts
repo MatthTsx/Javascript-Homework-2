@@ -13,11 +13,11 @@ export default class Environment{
         this._world = this._main.World
 
         this.addLight()
-        this.addSun()
+        // this.addSun()
     }
 
     addLight(){
-        const light = new THREE.AmbientLight('#ffffff', 1000)
+        const light = new THREE.AmbientLight('#ffffff', 1)
         this._scene?.add(light)
     }
 
